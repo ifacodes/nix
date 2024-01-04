@@ -3,7 +3,7 @@
 
   inputs = {
     nixpkgs.url = "github:NixOS/nixpkgs/nixpkgs-unstable";
-    home-manager.url = "github:nix-communuity/home-manager";
+    home-manager.url = "github:nix-community/home-manager";
     nix-darwin = {
       url = "github:LnL7/nix-darwin";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -14,6 +14,7 @@
     # Build darwin flake using:
     # $ darwin-rebuild build --flake .#Aoifes-MacBook-Air
     darwinConfigurations."Aoifes-MacBook-Air" = nix-darwin.lib.darwinSystem {
+      specialArgs = inputs;
       modules = [ 
         ./hosts/darwin
         home-manager.darwinModules.home-manager
