@@ -8,11 +8,6 @@
   ...
 }: {
 
-  imports = [
-   ./eza.nix
-  ];
-
-  programs = {
     git = {
       enable = true;
       userName = name;
@@ -51,5 +46,10 @@
     fzf.enable = true;
 
     zoxide.enable = true;
-  };  
+
+    eza = {
+      enable = true;
+      git = true;
+      icons = true;
+    };
 }
