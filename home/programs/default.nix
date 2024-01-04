@@ -2,14 +2,16 @@
   config, 
   pkgs, 
   lib,
-  user, 
+  name,
+  user,
+  email, 
   ...
 }: {
 
   git = {
     enable = true;
-    userName = user.name;
-    userEmail = user.email;
+    userName = name;
+    userEmail = email;
     lfs = {
       enable = true;
     };
@@ -25,8 +27,8 @@
     };
   };
 
-  zsh = {
-    enable = true;
-  };
+  # zsh = {
+  #   enable = true;
+  # };
   
 }
