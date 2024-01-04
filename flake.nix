@@ -10,7 +10,7 @@
     };
   };
 
-  outputs = inputs@{ self, nix-darwin, nixpkgs, home-manager }: {
+  outputs = inputs@{ self, nix-darwin, nixpkgs, home-manager, ... }: {
     # Build darwin flake using:
     # $ darwin-rebuild build --flake .#Aoifes-MacBook-Air
     darwinConfigurations."Aoifes-MacBook-Air" = nix-darwin.lib.darwinSystem {
