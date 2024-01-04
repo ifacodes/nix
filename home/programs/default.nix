@@ -13,6 +13,7 @@
     userName = name;
     userEmail = email;
     signing.key = "31BAA9F06D08C088";
+    delta.enable = true;
     lfs = {
       enable = true;
     };
@@ -41,5 +42,9 @@
     enable = true;
     initExtra = builtins.readFile ./zshrc;
   };
+
+  fzf.enable = true;
+
+  zoxide.enable = true;
   
 }
