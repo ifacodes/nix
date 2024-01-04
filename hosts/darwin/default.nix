@@ -10,6 +10,7 @@
   services.nix-daemon.enable = true;
 
   nix = {
+    package = pkgs.nixUnstable;
     settings.trusted-users = [ 
         "@admin" 
         "ifa"
