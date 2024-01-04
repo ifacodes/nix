@@ -16,8 +16,8 @@
     darwinConfigurations."Aoifes-MacBook-Air" = nix-darwin.lib.darwinSystem {
       specialArgs = inputs;
       modules = [ 
-        ./hosts/darwin
         home-manager.darwinModules.home-manager
+        ./hosts/darwin
       ];
     };
 

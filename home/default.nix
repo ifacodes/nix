@@ -10,7 +10,7 @@
 		email = "me@ifa.codes";
 in {
 	users.users.${user} = {
-		name = ${user};
+		name = "${user}";
 		home = "/Users/${user}";
 		isHidden = false;
 		shell = pkgs.zsh;
@@ -24,16 +24,17 @@ in {
 	home-manager = {
 		useGlobalPkgs = true;
 		useUserPackages = true;
-		user.$(user) = { pkgs, config, lib, ...}: {
+		users.${user} = { pkgs, config, lib, ... }: {
 			home = {
 				enableNixpkgsReleaseCheck = false;
 				#  packages = pkgs.callPackage ./packages.nix {};
+				packages = with pkgs; [
+					sl
+				];
 				stateVersion = "23.11";
 			};
 
-			programs = {
-				import ./programs { inherit config pkgs libs name user email; };
-			};
+			programs = {} // import ./programs { inherit config pkgs lib name user email; };
 
 			# Marked broken Oct 20, 2022 check later to remove this
 			# https://github.com/nix-community/home-manager/issues/3344
