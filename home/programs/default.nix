@@ -27,8 +27,9 @@
     };
   };
 
-  # zsh = {
-  #   enable = true;
-  # };
+  zsh = {
+    enable = true;
+    initExtra = builtins.readFile ./zshrc;
+  };
   
 }
