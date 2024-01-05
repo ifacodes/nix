@@ -1,17 +1,14 @@
 { 
   config, 
   pkgs, 
-  lib,
-  name,
-  user,
-  email, 
+  lib, 
   ...
 }: {
 
     git = {
       enable = true;
-      userName = name;
-      userEmail = email;
+      userName = "Aoife Bradley";
+      userEmail = "me@ifa.codes";
       signing.key = "31BAA9F06D08C088";
       delta.enable = true;
       lfs = {

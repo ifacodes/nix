@@ -1,47 +1,24 @@
 { 
 	config, 
 	pkgs, 
-	lib, 
-	home-manager, 
+	lib,
 	...
-}: let
-		name = "Aoife Bradley";
-		user = "ifa";
-		email = "me@ifa.codes";
-in {
+}: {
 
-	users.users.${user} = {
-		name = "${user}";
-		home = "/Users/${user}";
-		isHidden = false;
-		shell = pkgs.zsh;
+	home = {
+		enableNixpkgsReleaseCheck = false;
+		#  packages = pkgs.callPackage ./packages.nix {};
+		packages = with pkgs; [
+			sl
+		];
+		stateVersion = "23.11";
 	};
 
-	homebrew = {
-		enable = true;
-		# casks = pkgs.callPackage ./casks.nix {};
-	};
+	programs = {
+		home-manager.enable = true;
+	} // import ./programs { inherit config pkgs lib; };
 
-	home-manager = {
-		useGlobalPkgs = true;
-		#useUserPackages = true;
-		users.${user} = { pkgs, config, lib, ... }: {
-			home = {
-				enableNixpkgsReleaseCheck = false;
-				#  packages = pkgs.callPackage ./packages.nix {};
-				packages = with pkgs; [
-					sl
-				];
-				stateVersion = "23.11";
-			};
-
-			programs = {} // import ./programs { inherit config pkgs lib name user email; };
-
-			# Marked broken Oct 20, 2022 check later to remove this
-			# https://github.com/nix-community/home-manager/issues/3344
-			# manual.manpages.enable = false;
-			
-		};
-	};
-	
+	# Marked broken Oct 20, 2022 check later to remove this
+	# https://github.com/nix-community/home-manager/issues/3344
+	# manual.manpages.enable = false;	
 }

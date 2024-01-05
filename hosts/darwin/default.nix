@@ -3,17 +3,26 @@
   config, 
   pkgs, 
   ... 
-}: {
-  imports = [ ../../home ];
+}: let
+  user = "ifa";
+in {
+ # imports = [ ../../home ];
 
   # Auto upgrade nix package and the daemon service.
   services.nix-daemon.enable = true;
 
+	users.users.${user} = {
+		name = "${user}";
+		home = "/Users/${user}";
+		isHidden = false;
+		#shell = pkgs.zsh;
+	};
+  
   nix = {
     package = pkgs.nixUnstable;
     settings.trusted-users = [ 
         "@admin" 
-        "ifa"
+        "${user}"
       ];
     settings.experimental-features = "nix-command flakes";
       
