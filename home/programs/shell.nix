@@ -1,4 +1,4 @@
-{ ... }: {
+{ pkgs, ... }: {
 
   programs = {
   
@@ -6,6 +6,10 @@
       enable = true;
       initExtra = builtins.readFile ./zshrc;
       oh-my-zsh = {
+        enable = true;
+      };
+      plugins = [ ];
+      syntaxHighlighting = {
         enable = true;
       };
     };

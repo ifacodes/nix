@@ -19,12 +19,12 @@
 
   outputs = inputs@{ self, nix-darwin, nixpkgs, home-manager, rust-overlay, ... }: {
 
-    overlays = import ./overlays {inherit rust-overlay;};
+    overlays = import ./overlays { inherit rust-overlay; };
   
     # Build darwin flake using:
     # $ darwin-rebuild build --flake .#Aoifes-MacBook-Air
     darwinConfigurations."Aoifes-MacBook-Air" = nix-darwin.lib.darwinSystem {
-      specialArgs =  inputs // { inherit overlays;};
+      specialArgs = inputs // { overlays = self.overlays; };
       modules = [ 
         home-manager.darwinModules.home-manager
         {
@@ -34,7 +34,7 @@
         	};
           home-manager.useGlobalPkgs = true;
           # home-manager.useUserPkgs= true;
-          extraSpecialArgs = { inherit overlays; };
+          home-manager. extraSpecialArgs = { overlays = self. overlays; };
           home-manager.users.ifa = import ./home;
           # abloobloobooo
         }

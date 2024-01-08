@@ -46,6 +46,7 @@ in {
   environment.systemPackages = with pkgs; [
     vim
     rust-bin.stable.latest.default
+    cargo-mommy
   ];
 
   fonts.fontDir.enable = true;
