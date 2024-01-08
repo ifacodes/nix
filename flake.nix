@@ -7,17 +7,26 @@
       url = "github:LnL7/nix-darwin";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-    home-manager.url = "github:nix-community/home-manager";
-    home-manager.inputs.nixpkgs.follows = "nixpkgs";
+    home-manager = {
+      url = "github:nix-community/home-manager";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+    rust-overlay = {
+      url = "github:oxalica/rust-overlay";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
-  outputs = inputs@{ self, nix-darwin, nixpkgs, home-manager, ... }: {
+  outputs = inputs@{ self, nix-darwin, nixpkgs, home-manager, rust-overlay, ... }: {
+
+    overlays = import ./overlays {inherit rust-overlay;};
+  
     # Build darwin flake using:
     # $ darwin-rebuild build --flake .#Aoifes-MacBook-Air
     darwinConfigurations."Aoifes-MacBook-Air" = nix-darwin.lib.darwinSystem {
-      specialArgs = inputs;
+      specialArgs =  inputs // { inherit overlays;};
       modules = [ 
-        home-manager.darwinModules.home-manager 
+        home-manager.darwinModules.home-manager
         {
         	homebrew = {
         		enable = true;
@@ -25,7 +34,9 @@
         	};
           home-manager.useGlobalPkgs = true;
           # home-manager.useUserPkgs= true;
+          extraSpecialArgs = { inherit overlays; };
           home-manager.users.ifa = import ./home;
+          # abloobloobooo
         }
         ./hosts/darwin
       ];

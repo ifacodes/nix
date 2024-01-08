@@ -2,6 +2,7 @@
   self,
   config, 
   pkgs, 
+  overlays,
   ... 
 }: let
   user = "ifa";
@@ -35,10 +36,16 @@ in {
   };
 
   # The platform the configuration will be used on.
-  nixpkgs.hostPlatform = "aarch64-darwin";
-
+  nixpkgs = {
+    hostPlatform = "aarch64-darwin";
+    overlays = [
+      overlays.modifications
+    ];
+  };
+  
   environment.systemPackages = with pkgs; [
     vim
+    rust-bin.stable.latest.default
   ];
 
   fonts.fontDir.enable = true;

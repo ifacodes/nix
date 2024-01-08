@@ -2,6 +2,7 @@
 	config, 
 	pkgs, 
 	lib,
+	overlays,
 	...
 }: {
 
@@ -20,6 +21,12 @@
 
 	programs = {
 		home-manager.enable = true;
+	};
+
+	nixpkgs = {
+		overlays = [
+			overlays.modifications
+		];
 	};
 	
 	# Marked broken Oct 20, 2022 check later to remove this
