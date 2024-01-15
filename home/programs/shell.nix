@@ -1,4 +1,4 @@
-{ pkgs, ... }: {
+{ pkgs, lib, ... }: {
 
   programs = {
   
@@ -23,7 +23,7 @@
       shellAliases = {
         ls = "eza";
         ffmpeg = "ffmpeg -hide_banner";
-        gg = "git log --online --graph --all";
+        gg = "git log --oneline --graph --all";
         fd = "fdfind";
         gs = "git show-branch";
         bc = "gc -lq";
@@ -39,6 +39,7 @@
 
     starship = {
       enable = true;
+      enableZshIntegration = true;
       settings = {
         
       };
