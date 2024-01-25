@@ -45,7 +45,9 @@ in {
   
   environment.systemPackages = with pkgs; [
     vim
-    rust-bin.stable.latest.default
+    rust-bin.stable.latest.default.override {
+      extensions = [ "rust-src" ];
+    }
     cargo-mommy
   ];
 
