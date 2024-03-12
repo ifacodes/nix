@@ -102,7 +102,7 @@
 
 export GOPATH="$HOME/.go"
 
-export PATH="$PATH:$HOME/.local/bin:$HOME/.cargo/bin/cargo:$HOME/.yarn/bin:$GOPATH/bin:/opt/homebrew/bin/ffmpeg:"
+export PATH="$PATH:$HOME/.local/bin:$HOME/.cargo/bin:$HOME/.yarn/bin:$GOPATH/bin:/opt/homebrew/bin/ffmpeg:"
 
 #export editor="nvim"
 

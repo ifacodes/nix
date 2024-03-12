@@ -45,10 +45,11 @@ in {
   
   environment.systemPackages = with pkgs; [
     vim
-    rust-bin.stable.latest.default.override {
+    (rust-bin.stable.latest.default.override {
       extensions = [ "rust-src" ];
-    }
+    })
     cargo-mommy
+    wget
   ];
 
   fonts.fontDir.enable = true;

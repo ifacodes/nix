@@ -15,6 +15,7 @@
 		#  packages = pkgs.callPackage ./packages.nix {};
 		packages = with pkgs; [
 			sl
+			lilypond-with-fonts
 		];
 		stateVersion = "23.11";
 	};

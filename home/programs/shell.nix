@@ -5,6 +5,9 @@
     zsh = {
       enable = true;
       initExtra = builtins.readFile ./zshrc;
+      initExtraFirst = ''
+        DISABLE_MAGIC_FUNCTIONS=true
+      '';
       plugins = [
         {
           name = "zsh-nvm";
