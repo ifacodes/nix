@@ -11,15 +11,11 @@
       url = "github:nix-community/home-manager";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-    rust-overlay = {
-      url = "github:oxalica/rust-overlay";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
   };
 
   outputs = inputs@{ self, nix-darwin, nixpkgs, home-manager, rust-overlay, ... }: {
 
-    overlays = import ./overlays { inherit rust-overlay; };
+    overlays = import ./overlays;
   
     # Build darwin flake using:
     # $ darwin-rebuild build --flake .#Aoifes-MacBook-Air
@@ -34,7 +30,7 @@
         	};
           home-manager.useGlobalPkgs = true;
           # home-manager.useUserPkgs= true;
-          home-manager. extraSpecialArgs = { overlays = self. overlays; };
+          home-manager. extraSpecialArgs = { overlays = self.overlays; };
           home-manager.users.ifa = import ./home;
           # abloobloobooo
         }

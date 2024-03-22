@@ -1,9 +1,6 @@
-{ rust-overlay, ... }: {
+{ ... }: {
 
   modifications = final: prev: {
-    overlays = [
-      rust-overlay.overlays.default
-    ];
     cargo-mommy = prev.cargo-mommy.overrideAttrs (old: rec {
       pname = "cargo-mommy";
       version = "0.3.1";
@@ -16,7 +13,7 @@
       cargoDeps = old.cargoDeps.overrideAttrs (prev.lib.const {
         name = "${pname}-vendor.tar.gz";
         inherit src;
-        outputHash = "";
+        outputHash = "sha256-K51iqSsGPvnNVEsE2isNRqSPgaetl719+jyknkyhxYo=";
       });
     });
   };
