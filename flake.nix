@@ -13,7 +13,7 @@
     };
   };
 
-  outputs = inputs@{ self, nix-darwin, nixpkgs, home-manager, rust-overlay, ... }: {
+  outputs = inputs@{ self, nix-darwin, nixpkgs, home-manager, ... }: {
 
     overlays = import ./overlays;
   

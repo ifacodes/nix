@@ -17,6 +17,10 @@
 			sl
 			lilypond-with-fonts
 			mysql
+			fastfetch
+			w3m
+			libsixel
+			imagemagickBig
 		];
 		stateVersion = "23.11";
 	};

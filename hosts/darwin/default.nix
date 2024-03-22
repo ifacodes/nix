@@ -39,15 +39,13 @@ in {
   nixpkgs = {
     hostPlatform = "aarch64-darwin";
     overlays = [
-      overlays.modifications
+      #overlays.modifications
     ];
   };
   
   environment.systemPackages = with pkgs; [
     vim
-    # (rust-bin.stable.latest.default.override {
-    #   extensions = [ "rust-src" ];
-    # })
+    rustup
     cargo-mommy
     wget
   ];

@@ -51,6 +51,8 @@
     fzf.enable = true;
 
     zoxide.enable = true;
+
+    
     
   };
 
