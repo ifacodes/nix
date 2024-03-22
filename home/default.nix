@@ -16,6 +16,7 @@
 		packages = with pkgs; [
 			sl
 			lilypond-with-fonts
+			mysql
 		];
 		stateVersion = "23.11";
 	};
