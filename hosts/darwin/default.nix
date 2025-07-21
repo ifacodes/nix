@@ -10,7 +10,7 @@ in {
  # imports = [ ../../home ];
 
   # Auto upgrade nix package and the daemon service.
-  services.nix-daemon.enable = true;
+  #services.nix-daemon.enable = true;
 
 	users.users.${user} = {
 		name = "${user}";
@@ -20,7 +20,7 @@ in {
 	};
   
   nix = {
-    package = pkgs.nixUnstable;
+    package = pkgs.nixVersions.git;
     settings.trusted-users = [ 
         "@admin" 
         "${user}"
@@ -28,7 +28,7 @@ in {
     settings.experimental-features = "nix-command flakes";
       
     gc = {
-      user = "root";
+      #user = "root";
       automatic = true;
       interval = { Weekday = 0; Hour = 2; Minute = 0; };
       options = "--delete-older-than 30d";  
@@ -50,7 +50,7 @@ in {
     wget
   ];
 
-  fonts.fontDir.enable = true;
+  #fonts.fontDir.enable = true;
 
   system = {
     # Set Git commit has for darwin-version.
@@ -58,8 +58,8 @@ in {
     
     # Used for backwards compatibility, please read the changelog before changing.
     # $ darwin-rebuild changelog
-    stateVersion = 4;
-
+    stateVersion = 5;
+    primaryUser = "${user}";
     defaults = {
       dock = {
         autohide = true;

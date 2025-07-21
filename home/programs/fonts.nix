@@ -1,8 +1,7 @@
 { pkgs, ... }: {
   fonts.fontconfig.enable = true;
   home.packages = with pkgs; [
-    (nerdfonts.override { fonts = [
-      "NerdFontsSymbolsOnly"
-    ]; })
+           nerd-fonts._0xproto
+           nerd-fonts.droid-sans-mono
   ];
 }

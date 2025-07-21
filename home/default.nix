@@ -15,12 +15,12 @@
 		#  packages = pkgs.callPackage ./packages.nix {};
 		packages = with pkgs; [
 			sl
-			lilypond-with-fonts
-			mysql
+			mariadb
 			fastfetch
 			w3m
 			libsixel
 			imagemagickBig
+			binutils
 		];
 		stateVersion = "23.11";
 	};
@@ -29,11 +29,11 @@
 		home-manager.enable = true;
 	};
 
-	nixpkgs = {
-		overlays = [
-			overlays.modifications
-		];
-	};
+	# nixpkgs = {
+	# 	overlays = [
+	# 		#overlays.modifications
+	# 	];
+	# };
 	
 	# Marked broken Oct 20, 2022 check later to remove this
 	# https://github.com/nix-community/home-manager/issues/3344
