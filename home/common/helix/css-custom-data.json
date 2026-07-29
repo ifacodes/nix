@@ -1,0 +1,146 @@
+{
+  "version": 1.1,
+  "atDirectives": [
+    {
+      "name": "@define-color",
+      "description": "GTK color definition"
+    }
+  ],
+  "pseudoClasses": [],
+  "pseudoElements": [],
+  "properties": [],
+  "values": [
+    {
+      "name": "shade()",
+      "description": "GTK color function to lighten or darken a color"
+    },
+    {
+      "name": "alpha()",
+      "description": "GTK color function to add transparency"
+    },
+    {
+      "name": "@base00",
+      "description": "Stylix base color - Background"
+    },
+    {
+      "name": "@base01",
+      "description": "Stylix base color - Mantle"
+    },
+    {
+      "name": "@base02",
+      "description": "Stylix base color - Surface0"
+    },
+    {
+      "name": "@base03",
+      "description": "Stylix base color - Surface1"
+    },
+    {
+      "name": "@base04",
+      "description": "Stylix base color - Surface2"
+    },
+    {
+      "name": "@base05",
+      "description": "Stylix base color - Text"
+    },
+    {
+      "name": "@base06",
+      "description": "Stylix base color - Rosewater"
+    },
+    {
+      "name": "@base07",
+      "description": "Stylix base color - Lavender"
+    },
+    {
+      "name": "@base08",
+      "description": "Stylix base color - Red"
+    },
+    {
+      "name": "@base09",
+      "description": "Stylix base color - Peach"
+    },
+    {
+      "name": "@base0A",
+      "description": "Stylix base color - Yellow"
+    },
+    {
+      "name": "@base0B",
+      "description": "Stylix base color - Green"
+    },
+    {
+      "name": "@base0C",
+      "description": "Stylix base color - Teal"
+    },
+    {
+      "name": "@base0D",
+      "description": "Stylix base color - Blue"
+    },
+    {
+      "name": "@base0E",
+      "description": "Stylix base color - Mauve"
+    },
+    {
+      "name": "@base0F",
+      "description": "Stylix base color - Flamingo"
+    },
+    {
+      "name": "@theme_bg_color",
+      "description": "GTK theme background color (maps to @base00)"
+    },
+    {
+      "name": "@theme_fg_color",
+      "description": "GTK theme foreground color (maps to @base05)"
+    },
+    {
+      "name": "@theme_selected_bg_color",
+      "description": "GTK theme selected background color"
+    },
+    {
+      "name": "@theme_selected_fg_color",
+      "description": "GTK theme selected foreground color"
+    },
+    {
+      "name": "@theme_text_color",
+      "description": "GTK theme text color"
+    },
+    {
+      "name": "@theme_base_color",
+      "description": "GTK theme base color"
+    },
+    {
+      "name": "@sidebar_bg_color",
+      "description": "GTK sidebar background color"
+    },
+    {
+      "name": "@borders",
+      "description": "GTK border color"
+    },
+    {
+      "name": "@warning_color",
+      "description": "GTK warning color"
+    },
+    {
+      "name": "@error_color",
+      "description": "GTK error color"
+    },
+    {
+      "name": "@success_color",
+      "description": "GTK success color"
+    },
+    {
+      "name": "@purple_1",
+      "description": "Purple accent color"
+    },
+    {
+      "name": "@red_1",
+      "description": "Red accent color"
+    },
+    {
+      "name": "@blue",
+      "description": "Blue accent color"
+    },
+    {
+      "name": "@foreground",
+      "description": "Foreground color"
+    }
+  ]
+}
