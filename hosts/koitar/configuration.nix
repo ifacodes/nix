@@ -1,4 +1,4 @@
-{ pkgs, lib, inputs, hostUsers, ... }:
+{ pkgs, lib, inputs, hostUsers, config, ... }:
 
 {
   imports = [
@@ -114,6 +114,7 @@
 
   users.mutableUsers = false;
 
+  age.secrets.ifa-password.file = ../../secrets/ifa-password.age;
 
   users.users = lib.genAttrs hostUsers (name: {
     isNormalUser = true;
@@ -131,7 +132,7 @@
       "lp"
       "docker"
     ];
-    hashedPassword = "$y$j9T$riudkXvBx2LHzWXRJQSe/.$W.oYtP9x2KllCh.ZLz0z/SAUa0DnJGPcgxqujhBZc/.";
+    hashedPasswordFile = config.age.secrets.ifa-password.path;
     openssh.authorizedKeys.keys = [
       "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIB9+W/cjdW4fKLLwQ9JnzOwAuGq9WzPRCeb69KiaHVXL"
     ];

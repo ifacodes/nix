@@ -1,8 +1,8 @@
-{config, lib, scheme, ...}:
+{config, lib, pkgs, scheme ? null, ...}:
 
 {
 
-  xdg.desktopEntries.Helix = {
+  xdg.desktopEntries.Helix = lib.mkIf pkgs.stdenv.isLinux {
     name = "Helix";
     genericName = "Text Editor";
     exec = "kitty hx %F";

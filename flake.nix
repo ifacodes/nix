@@ -49,6 +49,10 @@
       url = "github:FlameFlag/nixcord";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    agenix = {
+      url = "github:ryantm/agenix";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
   outputs = inputs@{ nixpkgs, nix-darwin, home-manager, ... }:
@@ -69,7 +73,7 @@
         hostModule
         {
           home-manager.useGlobalPkgs = true;
-          home-manager.extraSpecialArgs = { inherit inputs; };
+          home-manager.extraSpecialArgs = { inherit inputs; scheme = null; };
           home-manager.users = mkHomeUsers { inherit users; inherit platformModules; };
           home-manager.backupFileExtension = ".bak";
         }
@@ -81,6 +85,7 @@
       specialArgs = { inherit inputs; hostUsers = users; };
       modules = hostModules ++ [
         inputs.base16.nixosModule
+        inputs.agenix.nixosModules.default
         home-manager.nixosModules.home-manager
         {
           nixpkgs.overlays = [

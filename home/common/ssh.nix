@@ -1,7 +1,7 @@
-_: {
+{ lib, ... }: {
   programs.ssh = {
     enable = true;
     enableDefaultConfig = false;
-    settings."*".IdentityAgent = "~/.1password/agent.sock";
+    settings."*".IdentityAgent = lib.mkDefault "~/.1password/agent.sock";
   };
 }
