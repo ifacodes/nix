@@ -9,13 +9,21 @@
     alsa.support32Bit = true;
     pulse.enable = true;
 
+    # NOTE: these keys must be quoted. Unquoted `default.clock.rate` is Nix
+    # attribute nesting and serialises to {"default":{"clock":{"rate":...}}},
+    # which PipeWire ignores — it wants flat dotted keys.
     extraConfig.pipewire."92-low-latency" = {
       context.properties = {
-        default.clock.rate = 48000;
-        default.clock.allowed-rates = [ 44100 48000 96000 ];
-        default.clock.quantum = 192;
-        default.clock.min-quantum = 64;
-        default.clock.max-quantum = 2049;
+        "default.clock.rate" = 48000;
+        "default.clock.allowed-rates" = [ 44100 48000 96000 ];
+        "default.clock.quantum" = 192;
+        "default.clock.min-quantum" = 64;
+        "default.clock.max-quantum" = 2048;
+
+        # `quantum` above is only a fallback — clients that request their own
+        # latency (Chromium asks for 480) pull the graph elsewhere. Uncomment
+        # to pin the graph at 192 regardless of what clients ask for.
+        # "default.clock.force-quantum" = 192;
       };
     };
 

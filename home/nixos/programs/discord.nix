@@ -6,7 +6,9 @@
     discord.enable = false;
     discord.vencord.enable = false;
     discord.equicord.enable = true;
-    discord.krisp.enable = true;
+    # Inert here: nixcord only applies krisp as an override on the `discord`
+    # package, which is disabled above. Equibop never receives it.
+    discord.krisp.enable = false;
     discord.openASAR.enable = true;
 
     equibop.enable = true;

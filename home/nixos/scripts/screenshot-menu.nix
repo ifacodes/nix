@@ -6,7 +6,7 @@
     text = ''
       #!/bin/sh
 
-      selected=$(echo -e "Select\nScreen\nOutput" | \
+      selected=$(echo -e "Select\nWindow\nScreen" | \
         fuzzel --dmenu \
         --hide-prompt \
         --width 30 \

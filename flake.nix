@@ -94,6 +94,7 @@
             inputs.affinity-nix.overlays.default
             (import ./overlays/lix.nix)
             (import ./overlays/niri-libdisplay-info.nix inputs)
+            (import ./overlays/bitwig-studio.nix)
           ];
           home-manager.useGlobalPkgs = true;
           home-manager.useUserPackages = true;
