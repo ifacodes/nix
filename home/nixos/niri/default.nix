@@ -150,6 +150,7 @@ in
         };
         clip-to-geometry = true;
       }
+      { matches = [ { title = "firmament"; }]; open-floating = true; }
       { matches = [ { is-focused = true; } ]; opacity = 1.0; }
 
       # pavucontrol
@@ -182,17 +183,19 @@ in
 
       # kitty — float and center (override per-workspace if needed)
       { matches = [ { app-id = "^kitty$"; } ]; open-floating = true; }
-      { matches = [ { at-startup = true; app-id = "^kitty$"; } ]; open-on-workspace = "code"; tiled-state = true; }
+      { matches = [ { at-startup = true; app-id = "^kitty$"; } ]; open-on-workspace = "code"; tiled-state = true; open-floating = false; }
 
       # meowshell settings panel
       { matches = [ { title = "^meowshell-settings$"; } ]; open-floating = true; }
       {
-        matches = [ {app-id = "steam"; title = "^notificationtoasts_\\d+_desktop$"; }];
+        matches = [ {app-id = "steam"; title = ''^notificationtoasts_\\d+_desktop$''; }];
+        open-focused = false;
         default-floating-position = {
           x = 10;
           y = 10;
           relative-to = "bottom-right";
         };
+
       }
     ];
 

@@ -21,17 +21,12 @@
       url = "github:nix-community/fenix";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-    nix-vscode-extensions = {
-      url = "github:nix-community/nix-vscode-extensions/";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
     prismlauncher = {
       url = "github:PrismLauncher/PrismLauncher";
       inputs.nixpkgs.follows = "nixpkgs";
     };
     affinity-nix = {
       url = "github:mrshmllow/affinity-nix";
-      inputs.nixpkgs.follows = "nixpkgs";
     };
     quickshell = {
       url ="git+https://git.outfoxxed.me/outfoxxed/quickshell";
@@ -39,7 +34,6 @@
     };
     niri = {
       url = "github:epireyn/niri-flake";
-      inputs.nixpkgs.follows = "nixpkgs";
     };
     qml-language-server = {
       url = "github:cushycush/qml-language-server";
@@ -53,6 +47,7 @@
       url = "github:ryantm/agenix";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    meowshell.url = "git+file:///home/ifa/.config/quickshell/meowshell";
   };
 
   outputs = inputs@{ nixpkgs, nix-darwin, home-manager, ... }:
@@ -90,11 +85,13 @@
         {
           nixpkgs.overlays = [
             inputs.fenix.overlays.default
-            inputs.nix-vscode-extensions.overlays.default
-            inputs.affinity-nix.overlays.default
             (import ./overlays/lix.nix)
-            (import ./overlays/niri-libdisplay-info.nix inputs)
+            (import ./overlays/affinity.nix inputs)
+            # upstream niri-stable now builds against niri-flake's own nixpkgs and is in its cache
+            (final: prev: { niri-stable = inputs.niri.packages.${prev.stdenv.hostPlatform.system}.niri-stable; })
+            # (import ./overlays/niri-libdisplay-info.nix inputs)
             (import ./overlays/bitwig-studio.nix)
+            # (import ./overlays/eternal-terminal-cxx20.nix)
           ];
           home-manager.useGlobalPkgs = true;
           home-manager.useUserPackages = true;

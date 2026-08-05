@@ -10,4 +10,13 @@ let
 in
 {
   "ifa-password.age".publicKeys = users ++ systems;
+
+  # Client-certificate material for theory.aoife.moe (mTLS).
+  # Only the irreducible secrets live here — the .crt/.pem are public, and the
+  # .p12 bundles and iOS .mobileconfig are regenerated from key + cert.
+  "woodshed-ca-key.age".publicKeys = users ++ systems; # CA master: mints device access
+  "woodshed-koitar-key.age".publicKeys = [ ifa koitar ];
+  "woodshed-iphone-key.age".publicKeys = ifa;
+  "woodshed-macbook-key.age".publicKeys = [ ifa macbook ];
+  "woodshed-p12-password.age".publicKeys = users ++ systems;
 }

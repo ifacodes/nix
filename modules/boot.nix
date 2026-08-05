@@ -43,6 +43,11 @@
   # for games like deadlock
   boot.kernel.sysctl = {
     "vm.max_map_count" = 1048576;
+    "vm.oom_kill_allocating_task" = 0;
+    "vm.page-cluster" = 0;
+    "vm.swappiness" = 100;
+    "vm.watermark_boost_factor" = 0;
+    "vm.watermark_scale_factor" = 125;
   };
 
   boot.consoleLogLevel = 3;

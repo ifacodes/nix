@@ -1,6 +1,8 @@
-{ ... }:
+{ inputs, pkgs, ... }:
 
 {
+  services.oo7.enable = true;
+
   security.pam.services.hyprlock = { };
   security.pam.services.meowshell.text = ''
     account required pam_unix.so
@@ -8,6 +10,8 @@
     auth required pam_deny.so
     password sufficient pam_unix.so nullok yescrypt
   '';
+
+  environment.defaultPackages = [ inputs.agenix.packages.${pkgs.stdenv.hostPlatform.system}.default ];
 
   security.sudo.extraRules = [{
     users = [ "ifa" ];

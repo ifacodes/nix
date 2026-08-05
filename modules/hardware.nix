@@ -32,5 +32,18 @@
     ];
   });
 
-  zramSwap.enable = true;
+  services.earlyoom = {
+    enable = true;
+    freeMemThreshold = 5;
+    freeMemKillThreshold = 2;
+    freeSwapThreshold = 10;
+    freeSwapKillThreshold = 5;
+  };
+
+  zramSwap = {
+    enable = true;
+    algorithm = "zstd";
+    memoryPercent = 50;
+    priority = 5;
+  };
 }

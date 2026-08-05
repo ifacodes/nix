@@ -11,6 +11,11 @@
     ../../modules/security.nix
   ];
 
+  # read-only APFS, for mounting Mac drives
+  boot.extraModulePackages = [ config.boot.kernelPackages.apfs ];
+  # apfs module doesn't build on 7.3 yet (inode_operations.create signature change)
+  boot.kernelPackages = lib.mkForce pkgs.linuxPackages_7_2;
+
   virtualisation.libvirtd.enable = true;
   virtualisation.docker.enable = true;
   programs.virt-manager.enable = true;
@@ -41,7 +46,7 @@
 
   programs.gamescope = {
     enable = true;
-    capSysNice = true;
+    capSysNice = false;
   };
 
   programs._1password.enable = true;
@@ -62,7 +67,7 @@
 
   programs.gnupg.agent.enable = true;
 
-  services.dbus.packages = [ pkgs.gcr ];
+  services.dbus.packages = [ pkgs.gcr_3 ];
 
   services.kmscon = {
     enable = true;
@@ -112,9 +117,13 @@
     };
   };
 
+
   users.mutableUsers = false;
 
   age.secrets.ifa-password.file = ../../secrets/ifa-password.age;
+  age.secrets.woodshed-koitar-key.file = ../../secrets/woodshed-koitar-key.age;
+  age.secrets.woodshed-iphone-key.file = ../../secrets/woodshed-iphone-key.age;
+  age.secrets.woodshed-p12-password.file = ../../secrets/woodshed-p12-password.age;
 
   users.users = lib.genAttrs hostUsers (name: {
     isNormalUser = true;
@@ -162,18 +171,30 @@
 
   nix.package = pkgs.lixPackageSets.latest.lix;
   nix.settings = {
-    max-jobs = 2;
-    cores = 4;
+    max-jobs = 1;
+    cores = 8;
     experimental-features = [
       "nix-command"
       "flakes"
     ];
+    extra-substituters = [
+      "https://niri-epireyn.cachix.org"
+      "https://cache.forall.systems"
+    ];
+    extra-trusted-public-keys = [
+      "niri-epireyn.cachix.org-1:tlVyFN7CtsDT+ZcLPS+ekFWeT1X6X4OqvWqbBMyIzFA="
+      "cache.forall.systems:5PmD7QO4MSF8YgyRZtkSGXRDo96H3bybIf2SsQh8ScI="
+    ];
   };
 
-  nix.gc = {
-    automatic = true;
-    dates = "weekly";
-    options = "-d";
+  programs.nh = {
+    enable = true;
+    flake = "/home/ifa/.config/nixos";
+    clean = {
+      enable = true;
+      dates = "weekly";
+      extraArgs = "--keep 5 --keep-since 7d";
+    };
   };
 
   system.stateVersion = "26.11";

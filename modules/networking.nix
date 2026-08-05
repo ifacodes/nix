@@ -3,9 +3,14 @@
 {
   networking.hostName = "koitar";
 
-  systemd.network.links."10-enp34s0" = {
+  systemd.network.links."10-Ethernet" = {
     matchConfig.MACAddress = "2c:f0:5d:99:73:ab";
     linkConfig.Name = "Ethernet";
+  };
+
+  systemd.network.links."11-Wifi" = {
+    matchConfig.MACAddress = "cc:d9:ac:89:14:8f";
+    linkConfig.Name = "Wifi";
   };
 
   networking.networkmanager.enable = true;

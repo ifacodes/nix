@@ -48,7 +48,9 @@
     papirus-icon-theme
     playerctl
     fenix.stable.toolchain
+    lldb
     nautilus
+    fractal
     signal-desktop
     telegram-desktop
     tor-browser

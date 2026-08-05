@@ -8,6 +8,6 @@
     ./mpv.nix
     ./obsidian.nix
     ./thunderbird.nix
-    ./vscode.nix
+    ./vscodium.nix
   ];
 }
