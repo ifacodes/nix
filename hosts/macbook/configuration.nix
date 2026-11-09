@@ -17,7 +17,7 @@
   nixpkgs.config.allowUnfree = true;
 
   environment.systemPackages = with pkgs; [ nh orbstack vim rustup cargo-mommy wget ];
-  environment.variables.NH_FLAKE = "/Users/${primaryUser}/.config/nixos";
+  environment.variables.NH_FLAKE = "/Users/${primaryUser}/.config/nix-darwin";
 
   # nix-darwin has no programs.nh module, so the periodic `nh clean` that
   # programs.nh.clean.enable would give us on NixOS is hand-rolled here.

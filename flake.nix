@@ -47,7 +47,6 @@
       url = "github:ryantm/agenix";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-    meowshell.url = "git+file:///home/ifa/.config/quickshell/meowshell";
   };
 
   outputs = inputs@{ nixpkgs, nix-darwin, home-manager, ... }:
